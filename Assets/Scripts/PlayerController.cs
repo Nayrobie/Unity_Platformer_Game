@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
     public float knockBackLenght, knockBackForce;
     private float knockBackCounter;
 
+    public float bounceForce;
+
     private void Awake() 
     {
         instance = this;
@@ -99,5 +101,10 @@ public class PlayerController : MonoBehaviour
         theRB.velocity = new Vector2(0, knockBackForce); // Little jump on damage impact
 
         anim.SetTrigger("hurt"); // "hurt" is a trigger in Animator/Parameters
+    }
+
+    public void Bounce()
+    {
+        theRB.velocity = new Vector2(theRB.velocity.x, bounceForce);
     }
 }
